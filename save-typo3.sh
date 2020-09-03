@@ -71,6 +71,16 @@ function decodeArgs() {
 				fi
 				shift
 			;;
+			"-i")
+				shift
+				if [ "$1" != "" ]
+				then
+					identifier=$1
+				else
+					echo "The identifier is invalid"
+				fi
+				shift
+			;;
 			"-sql")
 				shift
 				if [ "$1" != "" ]
@@ -183,12 +193,17 @@ day_date=$(date +"%Y%m%d")
 dir_size=$(du -sh . | sed 's/\.//')
 db_size=$(mysql -h$typo_db_host -u$typo_db_username -p$typo_db_password -D$typo_db -e'show table status;' | awk '{sum=sum+$7+$9;} END {print sum/1024/1024}')
 
+if [ "$identifier" == "" ]
+then
+	identifier=$typo_db
+fi
+
 # save file .tar.gz
 if [ "$path_save" != "" ]
 then
 	filename=$path_save
 else
-	filename='export_'$typo_db'-'$day_date'.tar.gz'
+	filename='export_'$identifier'-'$day_date'.tar.gz'
 fi
 
 # sql file sql
