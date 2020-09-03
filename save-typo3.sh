@@ -311,7 +311,7 @@ rm $filenamesql
 
 echo "-----------------------------------------------------------------------"
 echo -n "Backup success: "
-echo $(pwd)"/"$filename
+echo $orig_path/$filename
 echo "-----------------------------------------------------------------------"
 
 date
