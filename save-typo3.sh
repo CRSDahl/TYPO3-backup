@@ -302,7 +302,7 @@ fi
 echo "-----------------------------------------------------------------------"
 echo "Compress the files and DB..."
 echo "-----------------------------------------------------------------------"
-tar cz --exclude='./typo3temp' --exclude='-/typo3' --exclude='./vendor' --exclude='./fileadmin/_processed_' -f $orig_path/$filename ./* ./.htaccess --transform='s,^\./,,'
+tar cz --exclude='./typo3temp' --exclude='./typo3_src' --exclude='./typo3' --exclude='./vendor' --exclude='./fileadmin/_processed_' -f $orig_path/$filename ./* ./.htaccess --transform='s,^\./,,'
 
 echo "-----------------------------------------------------------------------"
 echo "Delete $filenamesql..."
