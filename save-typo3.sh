@@ -130,6 +130,7 @@ force=0
 dbonly=0
 path_save=''
 path_sql=''
+orig_path=$(pwd)
 
 decodeArgs $*
 
@@ -286,7 +287,7 @@ fi
 echo "-----------------------------------------------------------------------"
 echo "Compress the files and DB..."
 echo "-----------------------------------------------------------------------"
-tar cz --exclude='./typo3temp' --exclude='-/typo3' --exclude='./vendor' --exclude='./fileadmin/_processed_' -f $filename ./* .htaccess
+tar cz --exclude='./typo3temp' --exclude='-/typo3' --exclude='./vendor' --exclude='./fileadmin/_processed_' -f $orig_path/$filename ./* .htaccess
 
 echo "-----------------------------------------------------------------------"
 echo "Delete $filenamesql..."
